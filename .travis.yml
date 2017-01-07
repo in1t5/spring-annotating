@@ -1,15 +1,21 @@
 language: java
 sudo: false
+
 jdk:
 - oraclejdk8
+
 os:
 - linux
+
 script: mvn test
+
 after_success:
-- ./travis/after_success.sh
+- mvn clean test jacoco:report coveralls:report
+
 notifications:
   slack:
     secure: htq03p0RqzZUElRV6YasT+kGl/v5+zViBP5rq3NHQV1VRcWlTMTlzdyNx6oUMnFQlVSL0iJt8IgQ+w4xFfC8y4hoiVwavxVB40RiDqkZvComWmnxdGYR0J5QnVemCwfTXIHKO8IhAeej31FkXcCcCiXwWU2x3A/gQJOZAsMG2itymMzTWaU/m5DJ2CwVRHmAJZ82yQSulWORDveQyCLzPjJnTXU+wuKUq2oK2yVs/+c46glOUUBmPOWODVgL0X652c/ui0RzBoEpDI5GgM/Jw5bog2OGkpF2OOevI73LeoHZrwG416Oz8s/74bQMkWRSiQarscR1sT2H/PSMjNhOY/Eaxyj7NMGKzfZnYdIMxx7gf2HDJFUXHT0tgopBXTVkgtliCA5O4gTCYRWmWYCR7opW20MiqNnjvMdSDgWY8/LwbDKPrNgyBKjyPBV7YNY6kaieJSQacMa4PFTizdrLltFbEd0g8bcKoeNDEpn6ZAdBPItvbLI8ghlcAKBs7aqQHxYv32hrt6uAXOg/IVb+6DVyG5szATwgj8Z2/Q329I5RtTW+KlCJatoHEeFh4VhYcJ977W4SGnMfIhSUPDQ4UHn/4yp9FPiYVhRD0rv9fKQ0UblLoDxhqt1v2W6hadowV/6Kj4H+8RQRBspGJDjxNWN3eYrMGo7r2gaMJ2/V2HY=
+
 addons:
   apt:
     packages:
