@@ -2,7 +2,7 @@ package reproducer;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("A")
 public class ACommand implements Command {
 	// autowire stuff
 	@Override

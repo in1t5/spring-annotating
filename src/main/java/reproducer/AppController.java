@@ -11,9 +11,7 @@ public class AppController {
 
 	public static void main(String[] args) {
 		ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//		ApplicationContext ctx = new ClassPathXmlApplicationContext("META-INF/beans.xml");
-		CommandProvider provider = ctx.getBean(CommandProvider.class);
-		System.out.println(provider.getCommand("aCommand").exec());
-		System.out.println(provider.getCommand("bCommand").exec());
+		System.out.println(ctx.getBean("A", Command.class).exec());
+		System.out.println(ctx.getBean("B", Command.class).exec());
 	}
 }
